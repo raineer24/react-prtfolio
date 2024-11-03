@@ -6,8 +6,33 @@ import phone from '../../assets/phone.svg';
 import loca from '../../assets/loca.svg';
 
 const Contact = () => {
+    const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "250d3cdd-b86b-4e37-a34d-64d090a47dea");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
   return (
-    <div className='contact'>
+    <div id='contact' className='contact'>
         <div className="contact-title">
             <h1>Get in touch</h1>
             <img src={theme_pattern} alt="" />
@@ -28,7 +53,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <form className="contact-right">
+            <form onSubmit={onSubmit} className="contact-right">
                 <label htmlFor="">Your name</label>
                 <input type="text" placeholder='Enter your name'name='name'/>
                 <label htmlFor="">Your Email</label>
@@ -37,6 +62,7 @@ const Contact = () => {
                 <textarea name="message" rows="8" placeholder='Enter your message'></textarea>
                 <button type='submit' className="contact-submit">Submit Now</button>
             </form>
+            <span>{result}</span>
         </div>
     </div>
   )
