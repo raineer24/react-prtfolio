@@ -5,6 +5,7 @@ import mail_icon from '../../assets/mail.svg';
 import phone from '../../assets/phone.svg';
 import loca from '../../assets/loca.svg';
 
+
 const Contact = () => {
     const [result, setResult] = React.useState("");
 
@@ -24,6 +25,7 @@ const Contact = () => {
 
     if (data.success) {
       setResult("Form Submitted Successfully");
+      alert(data.message);
       event.target.reset();
     } else {
       console.log("Error", data);
