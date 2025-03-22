@@ -16,7 +16,7 @@ const mywork_data = [
         w_no:1,
         w_name: "Web design",
         w_img: project2_img,
-        url: "https://rain-store-kyqaa0gt8-raineer24s-projects.vercel.app/"
+        url: "https://rain-store.vercel.app/"
     },
     {
         w_no:1,
