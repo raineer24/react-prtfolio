@@ -24,21 +24,21 @@ const mywork_data = [
         w_img: project3_img,
         url: "https://network-social.vercel.app/"
     },
-    {
-        w_no:2,
-        w_name: "Web design",
-        w_img: project4_img
-    },
-    {
-        w_no:3,
-        w_name: "Web design",
-        w_img: project5_img
-    },
-    {
-        w_no:4,
-        w_name: "Web design",
-        w_img: project6_img
-    },
+    // {
+    //     w_no:2,
+    //     w_name: "Web design",
+    //     w_img: project4_img
+    // },
+    // {
+    //     w_no:3,
+    //     w_name: "Web design",
+    //     w_img: project5_img
+    // },
+    // {
+    //     w_no:4,
+    //     w_name: "Web design",
+    //     w_img: project6_img
+    // },
 ]
 
 export default mywork_data;

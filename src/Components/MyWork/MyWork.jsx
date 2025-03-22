@@ -16,10 +16,10 @@ const MyWork = () => {
                 return <a href={`${work.url}`}><img key={index} href={"/"+work["url"]} src={work.w_img} alt="" /></a>
             })}
         </div>
-        <div className="mywork-showmore">
+        {/* <div className="mywork-showmore">
             <p>Show More</p>
             <img src={arrow_icon} alt="" />
-        </div>
+        </div> */}
     </div>
   )
 }
