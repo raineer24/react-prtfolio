@@ -7,6 +7,7 @@ import project6_img from '../assets/proj6.svg'
 
 const mywork_data = [
     {
+        url: "https://pern-stack-dztv.onrender.com/",
         w_no:1,
         w_name: "Web design",
         w_img: project1_img
@@ -14,12 +15,14 @@ const mywork_data = [
     {
         w_no:1,
         w_name: "Web design",
-        w_img: project2_img
+        w_img: project2_img,
+        url: "https://rain-store-kyqaa0gt8-raineer24s-projects.vercel.app/"
     },
     {
         w_no:1,
         w_name: "Web design",
-        w_img: project3_img
+        w_img: project3_img,
+        url: "https://network-social.vercel.app/"
     },
     {
         w_no:2,
