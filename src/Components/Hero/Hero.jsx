@@ -10,7 +10,14 @@ const Hero = () => {
         <h1><span>I'm Raineer Dela Rita,</span>frontend developer Cebu, PHI with 5 years of experience</h1>
         <div className="hero-action">
             <div className="hero-connect"><AnchorLink className='anchor-link' offset={50} href="#contact">Connect with me</AnchorLink></div>
-            <div className="hero-resume">My Resume</div>
+            <div className="hero-resume">
+
+            <a
+     href="./public/file.pdf"
+     download="mycv.pdf">
+     My Resume
+     </a>  
+            </div>
         </div>
 
     </div>
