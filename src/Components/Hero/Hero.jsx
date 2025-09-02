@@ -1,27 +1,56 @@
-import React from 'react'
-import './Hero.css'
-import profile_img from '../../assets/face_co-svg.jpg';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+// src/components/Hero/Hero.jsx - Simplified to fix text issues
+import React, { useEffect } from 'react';
+import './Hero.css';
 
 const Hero = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
-    <div id='home' className='hero'>
-        <img src={profile_img} alt="" />
-        <h1><span>I'm Raineer Dela Rita,</span>frontend developer Cebu, PHI with 5 years of experience</h1>
-        <div className="hero-action">
-            <div className="hero-connect"><AnchorLink className='anchor-link' offset={50} href="#contact">Connect with me</AnchorLink></div>
-            <div className="hero-resume">
-
-            <a
-     href="./public/file.pdf"
-     download="mycv.pdf">
-     My Resume
-     </a>  
-            </div>
+    <section id="home" className="hero bg-colonial high-contrast">
+      <div className="hero-content">
+        <h1>Building Digital Experiences</h1>
+        <p>Full-stack developer passionate about creating innovative solutions that make a difference</p>
+        <div className="cta-buttons">
+          <a 
+            href="#projects" 
+            className="btn btn-primary"
+            onClick={(e) => handleNavClick(e, '#projects')}
+          >
+            View My Work
+          </a>
+          <a 
+            href="#contact" 
+            className="btn btn-secondary"
+            onClick={(e) => handleNavClick(e, '#contact')}
+          >
+            Get In Touch
+          </a>
         </div>
+      </div>
+    </section>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Hero
+export default Hero;

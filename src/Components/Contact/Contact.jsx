@@ -1,73 +1,141 @@
-import React from 'react';
+// src/components/Contact/Contact.jsx
+import React, { useEffect, useRef, useState } from 'react';
 import './Contact.css';
-import theme_pattern from '../../assets/theme_pattern.svg'; 
-import mail_icon from '../../assets/mail.svg';
-import phone from '../../assets/phone.svg';
-import loca from '../../assets/loca.svg';
-
 
 const Contact = () => {
-    const [result, setResult] = React.useState("");
+  const contactRef = useRef();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    formData.append("access_key", "250d3cdd-b86b-4e37-a34d-64d090a47dea");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+    const fadeElements = contactRef.current?.querySelectorAll('.fade-in');
+    fadeElements?.forEach(el => observer.observe(el));
 
-    const data = await response.json();
+    return () => {
+      fadeElements?.forEach(el => observer.unobserve(el));
+    };
+  }, []);
 
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      alert(data.message);
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
-    }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  return (
-    <div id='contact' className='contact'>
-        <div className="contact-title">
-            <h1>Get in touch</h1>
-            <img src={theme_pattern} alt="" />
-        </div>
-        <div className="contact-section">
-            <div className="contact-left">
-                <h1>Let's talk</h1>
-                <p>I'm currently avaliable to take on new projects, so feel free to send me a message about anything that you want me to work on. You can contact anytime.</p>
-                <div className="contact-details">
-                    <div className="contact-detail">
-                        <img src={mail_icon} alt="" /><p>delaritaraineer81@gmail.com</p>
-                    </div>
-                    <div className="contact-detail">
-                        <img src={phone} alt="" /><p>0923-212-212</p>
-                    </div>
-                    <div className="contact-detail">
-                        <img src={loca} alt="" /><p>Cebu, PH</p>
-                    </div>
-                </div>
-            </div>
-            <form onSubmit={onSubmit} className="contact-right">
-                <label htmlFor="">Your name</label>
-                <input type="text" placeholder='Enter your name'name='name'/>
-                <label htmlFor="">Your Email</label>
-                <input type="email" placeholder='Enter your email' name='email' />
-                <label htmlFor="">Write your message here</label>
-                <textarea name="message" rows="8" placeholder='Enter your message'></textarea>
-                <button type='submit' className="contact-submit">Submit Now</button>
-            </form>
-            <span>{result}</span>
-        </div>
-    </div>
-  )
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for your message! I\'ll get back to you soon.');
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+  };
 
-export default Contact
+  const contactInfo = [
+    {
+      icon: '📧',
+      title: 'Email',
+      content: 'raineer@example.com'
+    },
+    {
+      icon: '📱',
+      title: 'Phone',
+      content: '+1 (555) 123-4567'
+    },
+    {
+      icon: '📍',
+      title: 'Location',
+      content: 'Cebu City, Philippines'
+    }
+  ];
+
+  return (
+    <section id="contact" className="contac bg-colonial parallax-bg floating-elements" ref={contactRef}>
+      <div className="container">
+        <div className="section-header fade-in">
+          <h2 className="section-title">Let's Work Together</h2>
+          <p className="section-subtitle" style={{color: 'rgba(255,255,255,0.8)'}}>
+            Ready to bring your ideas to life? Let's connect and create something amazing.
+          </p>
+        </div>
+        <div className="contact-content">
+          <div className="contact-info fade-in">
+            <h3>Get In Touch</h3>
+            {contactInfo.map((item, index) => (
+              <div key={index} className="contact-item">
+                <div className="contact-icon">{item.icon}</div>
+                <div>
+                  <h4>{item.title}</h4>
+                  <p>{item.content}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="contact-form fade-in">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="your.email@example.com"
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  required
+                  value={formData.message}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-primary" style={{width: '100%'}}>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
