@@ -1,54 +1,20 @@
-// src/components/Hero/Hero.jsx
-import React, { useEffect, useState } from 'react';
+// src/components/Hero/Hero.jsx - Simplified to fix text issues
+import React, { useEffect } from 'react';
 import './Hero.css';
 
 const Hero = () => {
-  const [displayText, setDisplayText] = useState('');
-  const roles = ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Innovator'];
-  const [currentRole, setCurrentRole] = useState(0);
-  const [currentChar, setCurrentChar] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const hero = document.querySelector('.hero');
       if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const typeEffect = () => {
-      const current = roles[currentRole];
-      
-      if (isDeleting) {
-        setCurrentChar(prev => prev - 1);
-      } else {
-        setCurrentChar(prev => prev + 1);
-      }
-
-      if (currentChar > current.length) {
-        setIsDeleting(true);
-        setTimeout(() => {}, 2000);
-        return;
-      }
-
-      if (currentChar === 0 && isDeleting) {
-        setIsDeleting(false);
-        setCurrentRole(prev => (prev + 1) % roles.length);
-      }
-
-      setDisplayText(current.substring(0, currentChar));
-    };
-
-    const timeout = setTimeout(typeEffect, isDeleting ? 50 : 100);
-    return () => clearTimeout(timeout);
-  }, [currentChar, isDeleting, currentRole, roles]);
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
@@ -62,7 +28,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero bg-colonial high-contrast">
       <div className="hero-content">
         <h1>Building Digital Experiences</h1>
         <p>Full-stack developer passionate about creating innovative solutions that make a difference</p>

@@ -69,7 +69,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="contact" ref={contactRef}>
+    <section id="contact" className="contac bg-colonial parallax-bg floating-elements" ref={contactRef}>
       <div className="container">
         <div className="section-header fade-in">
           <h2 className="section-title">Let's Work Together</h2>
