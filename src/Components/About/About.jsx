@@ -1,50 +1,71 @@
- import React from 'react';
- import './About.css';
- import theme_pattern from '../../assets/theme_pattern.svg';
- import profile_img from '../../assets/profile_img.jpg';
+// src/components/About/About.jsx
+import React, { useEffect, useRef } from 'react';
+import './About.css';
 
- function About() {
-   return (
-     <div id='about' className='about'>
-        <div className="about-title">
-            <h1>About me</h1>
-            <img src={theme_pattern} alt="" />
+const About = () => {
+  const aboutRef = useRef();
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const fadeElements = aboutRef.current?.querySelectorAll('.fade-in');
+    fadeElements?.forEach(el => observer.observe(el));
+
+    return () => {
+      fadeElements?.forEach(el => observer.unobserve(el));
+    };
+  }, []);
+
+  const skills = [
+    'JavaScript', 'React', 'Node.js', 'Python', 'MongoDB', 'AWS'
+  ];
+
+  return (
+    <section id="about" className="about" ref={aboutRef}>
+      <div className="container">
+        <div className="section-header fade-in">
+          <h2 className="section-title">About Me</h2>
+          <p className="section-subtitle">Crafting digital solutions with passion and precision</p>
         </div>
-        <div className="about-sections">
-            <div className="about-left">
-                <img src={profile_img} alt="" />
+        <div className="about-content">
+          <div className="about-image fade-in">
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+              alt="Profile" 
+            />
+          </div>
+          <div className="about-text fade-in">
+            <h3>Hi, I'm Raineer</h3>
+            <p>
+              I'm a passionate full-stack developer with a love for creating innovative digital experiences. 
+              With expertise in modern web technologies, I specialize in building scalable applications 
+              that solve real-world problems.
+            </p>
+            <p>
+              When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
+              projects, or sharing knowledge with the developer community.
+            </p>
+            <div className="skills">
+              {skills.map((skill, index) => (
+                <span key={index} className="skill-tag">{skill}</span>
+              ))}
             </div>
-            <div className="about-right">
-                <div className="about-para">
-                    <p>I am an experienced Frontend Developer with over a decade of professional expertise in the field. Throughout my career, I have had the privilege of collaborating with prestigious organizations, contributing to their success and growth.</p>
-                    <p>My passion for frontend development is not only reflected in my extensive experience but also in the enthusiasm and dedication I bring to each project.</p>
-                </div>
-                <div className="about-skills">
-                    <div className="about-skill"><p>HTML & CSS</p><hr style={{width:"50%"}} /></div>
-                    <div className="about-skill"><p>React JS</p><hr style={{width:"70%"}} /></div>
-                    <div className="about-skill"><p>Angular</p><hr style={{width:"60%"}} /></div>
-                    <div className="about-skill"><p>Javascript</p><hr style={{width:"50%"}} /></div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div className="about-achievements">
-            <div className="about-achievement">
-                <h1>5+</h1>
-                <p>Years of experience</p>
-            </div>
-            <hr />
-            <div className="about-achievement">
-                <h1>25</h1>
-                <p>Projects Completed</p>
-            </div>
-            <hr />
-            <div className="about-achievement">
-                <h1>5+</h1>
-                <p>Happy Clients</p>
-            </div>
-        </div>
-     </div>
-   )
- }
- 
- export default About
+      </div>
+    </section>
+  );
+};
+
+export default About;

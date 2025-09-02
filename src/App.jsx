@@ -1,24 +1,24 @@
-import React from 'react'
-import Navbar from './Components/Navbar/navbar'
-import Hero from './Components/Hero/Hero'
-import About from './Components/About/About'
-import Services from './Components/Services/Services'
-import MyWork from './Components/MyWork/MyWork';
-import Contact from './Components/Contact/Contact'
-import Footer from './Components/Footer/Footer'
+// src/App.jsx
+import React from 'react';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import About from './components/About/About';
+import Projects from './components/Projects/Projects';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
+import './styles/globals.css';
 
-const App = () => {
+function App() {
   return (
-    <div>
-     <Navbar/>
-     <Hero />
-     {/* <About /> */}
-    {/* <Services /> */}
-    <MyWork />
-    <Contact />
-    <Footer />
+    <div className="App">
+      <Header />
+      <Hero />
+      <About />
+      <Projects />
+      <Contact />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

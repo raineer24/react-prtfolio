@@ -1,35 +1,36 @@
+// src/components/Footer/Footer.jsx
 import React from 'react';
-import  './Footer.css';
-import footer_logo from '../../assets/footer_logo.jpg';
-import user_icon from '../../assets/user_icon.svg'
+import './Footer.css';
 
 const Footer = () => {
-  return (
-    <div className='footer'>
-        <div className="footer-top">
-            <div className="footer-top-left">
-                <img src={footer_logo} alt="" />
-                <p>I am a frontend developer from, Philippines with 5 years of experience.</p>
-            </div>
-            <div className="footer-top-right">
-                <div className="footer-email-input">
-                    <img src={user_icon} alt="" />
-                    <input type="email" placeholder='Enter your email' />
-                </div>
-                <div className="footer-subscribe">Subscribe</div>
-            </div>
-        </div>
-        <hr />
-        <div className="footer-bottom">
-            <p className="footer-bottom-left">© 2024 Raineer dela Rita. All rights reserved.</p>
-            <div className="footer-bottom-right">
-                <p>Term of Services</p>
-                <p>Privacy Policy</p>
-                <p>Connect with me</p>
-            </div>
-        </div>
-    </div>
-  )
-}
+  const socialLinks = [
+    { icon: '📧', href: 'mailto:raineer@example.com', label: 'Email' },
+    { icon: '💼', href: 'https://linkedin.com/in/raineer', label: 'LinkedIn' },
+    { icon: '🐙', href: 'https://github.com/raineer24', label: 'GitHub' },
+    { icon: '🐦', href: 'https://twitter.com/raineer', label: 'Twitter' }
+  ];
 
-export default Footer
+  return (
+    <footer>
+      <div className="container">
+        <div className="social-links">
+          {socialLinks.map((link, index) => (
+            <a 
+              key={index}
+              href={link.href}
+              className="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </div>
+        <p>&copy; 2025 Raineer. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
