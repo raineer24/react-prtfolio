@@ -35,8 +35,8 @@ const About = () => {
   const handleResumeDownload = () => {
     // This will trigger the download when you add your PDF file
     const link = document.createElement('a');
-    link.href = '/resume/Raineer_DelaRita_Resume.pdf'; // You'll add this file to public/resume/
-    link.download = 'Raineer_DelaRita_Resume.pdf';
+    link.href = '/resume/Raineer_DelaRita.pdf'; // You'll add this file to public/resume/
+    link.download = 'Raineer_DelaRita.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
