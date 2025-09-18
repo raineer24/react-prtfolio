@@ -34,7 +34,7 @@ const Projects = () => {
       description: "A cutting-edge platform connecting businesses with skilled developers. Features talent matching, project management, and seamless hiring workflows for modern development teams.",
       technologies: ["React", "Node.js", "TypeScript", "PostgreSQL"],
       liveDemo: "https://www.codebility.tech/",
-      github: "#", // Private repository
+      github: "https://github.com/CodebilityDev/codebility-plus", // Private repository
       thumbnail: "/images/codebility-thumbnail.jpg",
       featured: true,
      
