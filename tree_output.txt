@@ -1,0 +1,60 @@
+.
+├── dist
+│   ├── assets
+│   │   ├── index-C4FmNG-Y.js
+│   │   └── index-sBMHwKAI.css
+│   ├── images
+│   ├── resume
+│   │   └── Raineer_DelaRita.pdf
+│   └── index.html
+├── public
+│   ├── images
+│   └── resume
+│       └── Raineer_DelaRita.pdf
+├── src
+│   ├── assets
+│   │   ├── mywork_data.js
+│   │   └── services_data.js
+│   ├── components
+│   │   ├── About
+│   │   │   ├── About.css
+│   │   │   └── About.jsx
+│   │   ├── Contact
+│   │   │   ├── Contact.css
+│   │   │   └── Contact.jsx
+│   │   ├── Footer
+│   │   │   ├── Footer.css
+│   │   │   └── Footer.jsx
+│   │   ├── Header
+│   │   │   ├── Header.css
+│   │   │   └── Header.jsx
+│   │   ├── Hero
+│   │   │   ├── Hero.css
+│   │   │   └── Hero.jsx
+│   │   ├── MyWork
+│   │   │   ├── MyWork.css
+│   │   │   └── MyWork.jsx
+│   │   ├── Navbar
+│   │   │   ├── Navbar.jsx
+│   │   │   └── navbar.css
+│   │   ├── Projects
+│   │   │   ├── ProjectCard.jsx
+│   │   │   ├── Projects.css
+│   │   │   └── Projects.jsx
+│   │   └── Services
+│   │       ├── Services.css
+│   │       └── Services.jsx
+│   ├── styles
+│   │   └── globals.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── tree_output.txt
+└── vite.config.js
+
+21 directories, 37 files
