@@ -11,7 +11,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
 
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent background scroll
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
@@ -53,18 +53,18 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           <button className="modal-close" onClick={onClose}>✕</button>
         </div>
 
-        {/* Modal Content */}
-        <div className="modal-content">
+        {/* Modal Content - INLINE STYLE FOR PADDING */}
+        <div className="modal-content" style={{paddingTop: '1rem'}}>
           {/* Project Overview */}
           <section className="modal-section">
-            <h3 className="section-title">📋 Project Overview</h3>
+            <h3 className="section-title" style={{color: '#000000'}}>📋 Project Overview</h3>
             <p className="section-text">{detailedDescription || project.description}</p>
           </section>
 
           {/* Screenshots Gallery */}
           {screenshots && screenshots.length > 0 && (
             <section className="modal-section">
-              <h3 className="section-title">📸 Screenshots</h3>
+              <h3 className="section-title" style={{color: '#000000'}}>📸 Screenshots</h3>
               <div className="screenshots-grid">
                 {screenshots.map((screenshot, index) => (
                   <div key={index} className="screenshot-item">
@@ -85,7 +85,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           {/* Key Metrics */}
           {keyMetrics && Object.keys(keyMetrics).length > 0 && (
             <section className="modal-section">
-              <h3 className="section-title">📊 Key Metrics</h3>
+              <h3 className="section-title" style={{color: '#000000'}}>📊 Key Metrics</h3>
               <div className="metrics-grid">
                 {Object.entries(keyMetrics).map(([key, value]) => (
                   <div key={key} className="metric-card">
@@ -100,7 +100,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           {/* Key Features */}
           {features && features.length > 0 && (
             <section className="modal-section">
-              <h3 className="section-title">✨ Key Features</h3>
+              <h3 className="section-title" style={{color: '#000000'}}>✨ Key Features</h3>
               <ul className="features-list">
                 {features.map((feature, index) => (
                   <li key={index} className="feature-item">
@@ -115,7 +115,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           {/* Business Impact */}
           {businessImpact && businessImpact.length > 0 && (
             <section className="modal-section">
-              <h3 className="section-title">💼 Business Impact</h3>
+              <h3 className="section-title" style={{color: '#000000'}}>💼 Business Impact</h3>
               <div className="impact-grid">
                 {businessImpact.map((impact, index) => (
                   <div key={index} className="impact-card">
@@ -130,7 +130,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           {/* Technical Architecture */}
           {architecture && (
             <section className="modal-section">
-              <h3 className="section-title">🏗️ Technical Architecture</h3>
+              <h3 className="section-title" style={{color: '#000000'}}>🏗️ Technical Architecture</h3>
               <div className="architecture-grid">
                 {architecture.frontend && (
                   <div className="arch-category">
@@ -169,7 +169,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           {/* Challenges & Solutions */}
           {challengesSolved && challengesSolved.length > 0 && (
             <section className="modal-section">
-              <h3 className="section-title">🎯 Challenges & Solutions</h3>
+              <h3 className="section-title" style={{color: '#000000'}}>🎯 Challenges & Solutions</h3>
               <div className="challenges-list">
                 {challengesSolved.map((item, index) => (
                   <div key={index} className="challenge-card">
@@ -193,7 +193,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
 
           {/* Technologies */}
           <section className="modal-section">
-            <h3 className="section-title">🛠️ Technologies Used</h3>
+            <h3 className="section-title" style={{color: '#000000'}}>🛠️ Technologies Used</h3>
             <div className="tech-tags-modal">
               {technologies.map((tech, index) => (
                 <span key={index} className="tech-tag-modal">{tech}</span>

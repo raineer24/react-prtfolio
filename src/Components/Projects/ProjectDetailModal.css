@@ -1,4 +1,5 @@
-/* src/components/Projects/ProjectDetailModal.css */
+/* PROJECT DETAIL MODAL CSS - VERSION 10.0 - OGMOK SPACING */
+/* If you see this version number in DevTools, the file is loading */
 
 /* Modal Overlay */
 .modal-overlay {
@@ -18,12 +19,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Modal Container */
@@ -50,7 +47,7 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Scrollbar */
 .modal-container::-webkit-scrollbar {
   width: 8px;
 }
@@ -64,7 +61,7 @@
   border-radius: 4px;
 }
 
-/* Modal Header */
+/* Header */
 .modal-header {
   position: sticky;
   top: 0;
@@ -93,6 +90,7 @@
   line-height: 1.3;
 }
 
+/* Status Badges */
 .modal-status {
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -114,12 +112,18 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
 .status-completed {
   background: rgba(0, 150, 255, 0.2);
   color: #0096ff;
   border: 1px solid rgba(0, 150, 255, 0.3);
 }
 
+/* Close Button */
 .modal-close {
   width: 40px;
   height: 40px;
@@ -142,38 +146,48 @@
   transform: rotate(90deg);
 }
 
-/* Modal Content */
+/* ============================================
+   CRITICAL SPACING - OGMOK REFERENCE
+   ============================================ */
+
 .modal-content {
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem 1.5rem 2rem;
 }
 
+/* Gap between sections (paragraph end to next title) */
 .modal-section {
-  margin-bottom: -9rem;
+  margin-bottom: -9.75rem; /* NEGATIVE margin - TIGHT OGMOK spacing */
+}
+
+.modal-section:first-child {
+  margin-top: 0;
 }
 
 .modal-section:last-child {
   margin-bottom: 0;
 }
 
+/* Section title to its content below */
 .section-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
-  margin-top: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin-bottom: 0.875rem !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
 }
 
 .section-text {
   font-size: 1.0625rem;
-  line-height: 1.8;
+  line-height: 1.6;
   color: var(--text-secondary);
-  margin: 0 0 1rem 0;
+  margin: 0;
+  margin-bottom: 0;
 }
 
-/* Screenshots Gallery */
+/* Screenshots */
 .screenshots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -207,7 +221,7 @@
   text-align: center;
 }
 
-/* Metrics Grid */
+/* Metrics */
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -241,7 +255,7 @@
   color: var(--primary);
 }
 
-/* Features List */
+/* Features */
 .features-list {
   list-style: none;
   padding: 0;
@@ -279,7 +293,7 @@
   line-height: 1.6;
 }
 
-/* Business Impact Grid */
+/* Business Impact */
 .impact-grid {
   display: grid;
   gap: 1rem;
@@ -311,7 +325,7 @@
   line-height: 1.6;
 }
 
-/* Architecture Grid */
+/* Architecture */
 .architecture-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -354,7 +368,7 @@
   border-color: var(--primary);
 }
 
-/* Challenges List */
+/* Challenges */
 .challenges-list {
   display: grid;
   gap: 1.5rem;
@@ -390,17 +404,9 @@
   gap: 0.5rem;
 }
 
-.challenge-label {
-  color: #ff6b6b;
-}
-
-.solution-label {
-  color: #4dabf7;
-}
-
-.result-label {
-  color: #51cf66;
-}
+.challenge-label { color: #ff6b6b; }
+.solution-label { color: #4dabf7; }
+.result-label { color: #51cf66; }
 
 .challenge-text,
 .solution-text,
@@ -435,12 +441,12 @@
   transform: translateY(-2px);
 }
 
-/* Modal Actions */
+/* Action Buttons */
 .modal-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
 
@@ -487,65 +493,36 @@
   box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
 }
 
-/* Mobile Responsiveness */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .modal-overlay {
-    padding: 1rem;
-  }
+  .modal-overlay { padding: 0.5rem; align-items: flex-start; }
+  .modal-container { max-height: 100vh; height: 100%; border-radius: 12px; }
+  .modal-header { padding: 1rem 1rem 1rem 3.5rem; min-height: 60px; }
+  .modal-title-section { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .modal-title { font-size: 1.25rem; line-height: 1.4; }
+  .modal-status { font-size: 0.75rem; padding: 0.375rem 0.75rem; }
+  .modal-close { position: absolute; top: 0.75rem; left: 0.75rem; width: 36px; height: 36px; }
+  .modal-content { padding: 1rem; }
+  .modal-section { margin-bottom: 1.25rem; }
+  .section-title { font-size: 1.125rem; }
+  .screenshots-grid, .metrics-grid, .architecture-grid { grid-template-columns: 1fr; }
+  .modal-actions { flex-direction: column; }
+}
 
-  .modal-container {
-    max-height: 95vh;
-    border-radius: 16px;
-  }
+@media (max-width: 480px) {
+  .modal-overlay { padding: 0; }
+  .modal-container { border-radius: 0; height: 100vh; }
+  .modal-header { padding: 0.875rem 0.875rem 0.875rem 3rem; }
+  .modal-close { top: 0.625rem; left: 0.625rem; width: 32px; height: 32px; }
+  .modal-content { padding: 0.875rem; }
+  .modal-section { margin-bottom: 1rem; }
+}
 
-  .modal-header {
-    padding: 1.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .modal-title-section {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .modal-title {
-    font-size: 1.5rem;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .modal-content {
-    padding: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 1.25rem;
-  }
-
-  .screenshots-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .metrics-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .architecture-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-actions {
-    flex-direction: column;
-  }
-
-  .challenge-card {
-    padding: 1.25rem;
-  }
+/* FORCE BLACK TITLES - Override globals.css */
+.modal-content .section-title {
+  background: none !important;
+  -webkit-text-fill-color: #000000 !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: #000000 !important;
 }
