@@ -1,8 +1,8 @@
 .
 ├── dist
 │   ├── assets
-│   │   ├── index-C4FmNG-Y.js
-│   │   └── index-sBMHwKAI.css
+│   │   ├── index-BvlN1xl0.js
+│   │   └── index-C5ON6x-s.css
 │   ├── images
 │   ├── resume
 │   │   └── Raineer_DelaRita.pdf
@@ -18,24 +18,24 @@
 │   ├── components
 │   │   ├── About
 │   │   │   ├── About.css
-│   │   │   └── About.jsx
+│   │   │   └── About.tsx
 │   │   ├── Contact
 │   │   │   ├── Contact.css
-│   │   │   └── Contact.jsx
+│   │   │   └── Contact.tsx
 │   │   ├── Footer
 │   │   │   ├── Footer.css
-│   │   │   └── Footer.jsx
+│   │   │   └── Footer.tsx
 │   │   ├── Header
 │   │   │   ├── Header.css
 │   │   │   └── Header.jsx
 │   │   ├── Hero
 │   │   │   ├── Hero.css
-│   │   │   └── Hero.jsx
+│   │   │   └── Hero.tsx
 │   │   ├── MyWork
 │   │   │   ├── MyWork.css
-│   │   │   └── MyWork.jsx
+│   │   │   └── MyWork.tsx
 │   │   ├── Navbar
-│   │   │   ├── Navbar.jsx
+│   │   │   ├── Navbar.tsx
 │   │   │   └── navbar.css
 │   │   ├── Projects
 │   │   │   ├── ProjectCard.jsx
@@ -44,17 +44,23 @@
 │   │   └── Services
 │   │       ├── Services.css
 │   │       └── Services.jsx
+│   ├── data
+│   │   ├── navigation.ts
+│   │   └── projects.ts
 │   ├── styles
 │   │   └── globals.css
-│   ├── App.jsx
+│   ├── types
+│   │   └── index.ts
+│   ├── App.tsx
 │   ├── index.css
-│   └── main.jsx
+│   └── main.tsx
 ├── README.md
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json
 ├── package.json
 ├── tree_output.txt
-└── vite.config.js
+├── tsconfig.json
+└── vite.config.ts
 
-21 directories, 37 files
+23 directories, 41 files
