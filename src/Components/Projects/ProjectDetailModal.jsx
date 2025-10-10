@@ -1,19 +1,15 @@
-// src/components/Projects/ProjectDetailModal.jsx
 import React, { useEffect } from 'react';
 import './ProjectDetailModal.css';
 
 const ProjectDetailModal = ({ project, isOpen, onClose }) => {
-  // Close modal on ESC key press
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') onClose();
     };
-
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
     }
-
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'unset';
@@ -25,11 +21,12 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
   const {
     title,
     detailedDescription,
-    technologies,
-    features,
-    businessImpact,
+    description,
+    technologies = [],
+    features = [],
+    businessImpact = [],
     keyMetrics,
-    challengesSolved,
+    challengesSolved = [],
     architecture,
     liveDemo,
     github,
@@ -40,12 +37,12 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        {/* Modal Header */}
-        <div className="modal-header">
+        
+        <div className="modal-header" style={{paddingBottom: '1rem'}}>
           <div className="modal-title-section">
             <h2 className="modal-title">{title}</h2>
             {status && (
-              <span className={`modal-status status-${status.toLowerCase().replace(' ', '-')}`}>
+              <span className={`modal-status status-${status.toLowerCase().replace(/\s+/g, '-')}`}>
                 {status}
               </span>
             )}
@@ -53,39 +50,38 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
           <button className="modal-close" onClick={onClose}>✕</button>
         </div>
 
-        {/* Modal Content - INLINE STYLE FOR PADDING */}
-        <div className="modal-content" style={{paddingTop: '1rem'}}>
-          {/* Project Overview */}
-          <section className="modal-section">
-            <h3 className="section-title" style={{color: '#000000'}}>📋 Project Overview</h3>
-            <p className="section-text">{detailedDescription || project.description}</p>
+        <div style={{padding: '0 2rem 1.5rem 2rem'}}>
+          
+          <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+            <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+              📋 Project Overview
+            </h3>
+            <p style={{fontSize: '1.0625rem', lineHeight: '1.6', color: '#6b7280', margin: 0}}>
+              {detailedDescription || description}
+            </p>
           </section>
 
-          {/* Screenshots Gallery */}
           {screenshots && screenshots.length > 0 && (
-            <section className="modal-section">
-              <h3 className="section-title" style={{color: '#000000'}}>📸 Screenshots</h3>
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                📸 Screenshots
+              </h3>
               <div className="screenshots-grid">
                 {screenshots.map((screenshot, index) => (
                   <div key={index} className="screenshot-item">
-                    <img 
-                      src={screenshot.url} 
-                      alt={screenshot.caption || `Screenshot ${index + 1}`}
-                      className="screenshot-image"
-                    />
-                    {screenshot.caption && (
-                      <p className="screenshot-caption">{screenshot.caption}</p>
-                    )}
+                    <img src={screenshot.url} alt={screenshot.caption || `Screenshot ${index + 1}`} className="screenshot-image" />
+                    {screenshot.caption && <p className="screenshot-caption">{screenshot.caption}</p>}
                   </div>
                 ))}
               </div>
             </section>
           )}
 
-          {/* Key Metrics */}
           {keyMetrics && Object.keys(keyMetrics).length > 0 && (
-            <section className="modal-section">
-              <h3 className="section-title" style={{color: '#000000'}}>📊 Key Metrics</h3>
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                📊 Key Metrics
+              </h3>
               <div className="metrics-grid">
                 {Object.entries(keyMetrics).map(([key, value]) => (
                   <div key={key} className="metric-card">
@@ -97,10 +93,11 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
-          {/* Key Features */}
           {features && features.length > 0 && (
-            <section className="modal-section">
-              <h3 className="section-title" style={{color: '#000000'}}>✨ Key Features</h3>
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                ✨ Key Features
+              </h3>
               <ul className="features-list">
                 {features.map((feature, index) => (
                   <li key={index} className="feature-item">
@@ -112,10 +109,11 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
-          {/* Business Impact */}
           {businessImpact && businessImpact.length > 0 && (
-            <section className="modal-section">
-              <h3 className="section-title" style={{color: '#000000'}}>💼 Business Impact</h3>
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                💼 Business Impact
+              </h3>
               <div className="impact-grid">
                 {businessImpact.map((impact, index) => (
                   <div key={index} className="impact-card">
@@ -127,12 +125,13 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
-          {/* Technical Architecture */}
           {architecture && (
-            <section className="modal-section">
-              <h3 className="section-title" style={{color: '#000000'}}>🏗️ Technical Architecture</h3>
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                🏗️ Technical Architecture
+              </h3>
               <div className="architecture-grid">
-                {architecture.frontend && (
+                {architecture.frontend && architecture.frontend.length > 0 && (
                   <div className="arch-category">
                     <h4 className="arch-title">Frontend</h4>
                     <div className="arch-tags">
@@ -142,7 +141,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                     </div>
                   </div>
                 )}
-                {architecture.backend && (
+                {architecture.backend && architecture.backend.length > 0 && (
                   <div className="arch-category">
                     <h4 className="arch-title">Backend</h4>
                     <div className="arch-tags">
@@ -152,7 +151,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                     </div>
                   </div>
                 )}
-                {architecture.thirdParty && (
+                {architecture.thirdParty && architecture.thirdParty.length > 0 && (
                   <div className="arch-category">
                     <h4 className="arch-title">Third-Party Services</h4>
                     <div className="arch-tags">
@@ -166,23 +165,24 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
-          {/* Challenges & Solutions */}
           {challengesSolved && challengesSolved.length > 0 && (
-            <section className="modal-section">
-              <h3 className="section-title" style={{color: '#000000'}}>🎯 Challenges & Solutions</h3>
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                🎯 Challenges & Solutions
+              </h3>
               <div className="challenges-list">
                 {challengesSolved.map((item, index) => (
                   <div key={index} className="challenge-card">
-                    <div className="challenge-section">
-                      <h4 className="challenge-label">Challenge</h4>
+                    <div style={{marginBottom: '1rem'}}>
+                      <h4 className="challenge-label">⚠️ Challenge</h4>
                       <p className="challenge-text">{item.challenge}</p>
                     </div>
-                    <div className="solution-section">
-                      <h4 className="solution-label">Solution</h4>
+                    <div style={{marginBottom: '1rem'}}>
+                      <h4 className="solution-label">💡 Solution</h4>
                       <p className="solution-text">{item.solution}</p>
                     </div>
-                    <div className="result-section">
-                      <h4 className="result-label">Result</h4>
+                    <div>
+                      <h4 className="result-label">✅ Result</h4>
                       <p className="result-text">{item.result}</p>
                     </div>
                   </div>
@@ -191,35 +191,27 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
-          {/* Technologies */}
-          <section className="modal-section">
-            <h3 className="section-title" style={{color: '#000000'}}>🛠️ Technologies Used</h3>
-            <div className="tech-tags-modal">
-              {technologies.map((tech, index) => (
-                <span key={index} className="tech-tag-modal">{tech}</span>
-              ))}
-            </div>
-          </section>
+          {technologies && technologies.length > 0 && (
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                🛠️ Technologies Used
+              </h3>
+              <div className="tech-tags-modal">
+                {technologies.map((tech, index) => (
+                  <span key={index} className="tech-tag-modal">{tech}</span>
+                ))}
+              </div>
+            </section>
+          )}
 
-          {/* Action Buttons */}
-          <section className="modal-actions">
+          <section style={{marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', gap: '1.5rem', flexWrap: 'wrap'}}>
             {liveDemo && (
-              <a 
-                href={liveDemo}
-                className="modal-btn modal-btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={liveDemo} className="modal-btn modal-btn-primary" target="_blank" rel="noopener noreferrer" style={{flex: '1', minWidth: '200px'}}>
                 🌐 View Live Demo
               </a>
             )}
             {github && (
-              <a 
-                href={github}
-                className="modal-btn modal-btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={github} className="modal-btn modal-btn-secondary" target="_blank" rel="noopener noreferrer" style={{flex: '1', minWidth: '200px'}}>
                 📁 View on GitHub
               </a>
             )}
