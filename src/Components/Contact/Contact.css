@@ -1,91 +1,134 @@
-/* src/components/Contact/Contact.css */
+/* Contact Section */
 .contact {
-    background: var(--bg-dark);
-    color: white;
+  background: var(--bg-dark);
+  color: white;
+  padding: 6rem 0;
 }
 
 .contact .section-title {
-    color: white;
-    background: linear-gradient(135deg, #06d6a0 0%, #64ffda 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  color: white;
+  background: linear-gradient(135deg, #06d6a0 0%, #64ffda 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
 }
 
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+.contact-subtitle {
+  text-align: center;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.contact-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--accent);
+/* Contact Options Grid */
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
 }
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+/* Contact CTA Cards */
+.contact-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
 }
 
+.contact-cta:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(6, 214, 160, 0.2);
+}
+
+/* Contact Icon */
 .contact-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
 }
 
-.contact-form {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* Contact CTA Content */
+.contact-cta-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
+.contact-cta-content p {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  word-break: break-word;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-    font-weight: 500;
+/* Contact Footer */
+.contact-footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    color: white;
-    font-size: 1rem;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.form-group textarea {
-    height: 120px;
-    resize: vertical;
+.contact-footer p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
+  .contact {
+    padding: 4rem 0;
+  }
+
+  .contact-options {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-cta {
+    padding: 1.5rem;
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .contact-cta-content h3 {
+    font-size: 1.125rem;
+  }
+
+  .contact-cta-content p {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
 }
