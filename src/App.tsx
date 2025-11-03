@@ -1,8 +1,14 @@
-// src/App.tsx - TypeScript Conversion (Preserves all atmospheric effects)
+// src/App.tsx - Enhanced with Journey and Case Study components
+// ✅ Preserves all atmospheric effects and existing functionality
+// ✅ Adds Journey timeline between About and Projects
+// ✅ Adds OGMOK Case Study before Projects
+
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
+import Journey from './components/Journey/Journey';        // ✅ NEW IMPORT
+import CaseStudy from './components/CaseStudy/CaseStudy';  // ✅ NEW IMPORT
 import Projects from './components/Projects/Projects';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
@@ -64,6 +70,8 @@ const App: React.FC = () => {
       <Header />
       <Hero />
       <About />
+      <Journey />      {/* ✅ NEW: Career timeline (2017-Present) */}
+      <CaseStudy />    {/* ✅ NEW: OGMOK case study with 5 tabs */}
       <Projects />
       <Contact />
       <Footer />

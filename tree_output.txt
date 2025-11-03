@@ -1,8 +1,8 @@
 .
 ├── dist
 │   ├── assets
-│   │   ├── index-Ap0UiqPt.css
-│   │   └── index-DuRWyaRh.js
+│   │   ├── index-BT5Br0nE.css
+│   │   └── index-C9mZOPCJ.js
 │   ├── images
 │   ├── resume
 │   │   └── Raineer_DelaRita.pdf
@@ -19,6 +19,8 @@
 │   │   ├── About
 │   │   │   ├── About.css
 │   │   │   └── About.tsx
+│   │   ├── CaseStudy
+│   │   │   └── CaseStudy.tsx
 │   │   ├── Contact
 │   │   │   ├── Contact.css
 │   │   │   └── Contact.tsx
@@ -31,6 +33,8 @@
 │   │   ├── Hero
 │   │   │   ├── Hero.css
 │   │   │   └── Hero.tsx
+│   │   ├── Journey
+│   │   │   └── Journey.tsx
 │   │   ├── MyWork
 │   │   │   ├── MyWork.css
 │   │   │   └── MyWork.tsx
@@ -65,4 +69,4 @@
 ├── tsconfig.json
 └── vite.config.ts
 
-23 directories, 43 files
+25 directories, 45 files
