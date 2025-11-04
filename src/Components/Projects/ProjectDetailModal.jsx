@@ -1,14 +1,17 @@
+// ProjectDetailModal.jsx - Enhanced with YouTube video embed support
+// Displays comprehensive project information including video demonstrations
 import React, { useEffect } from 'react';
 import './ProjectDetailModal.css';
 
 const ProjectDetailModal = ({ project, isOpen, onClose }) => {
+  // Close modal on ESC key press
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') onClose();
     };
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
     }
     return () => {
       document.removeEventListener('keydown', handleEscape);
@@ -31,13 +34,15 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
     liveDemo,
     github,
     screenshots = [],
-    status
+    status,
+    videoUrl // New field for YouTube video
   } = project;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
         
+        {/* Header with title, status badge, and close button */}
         <div className="modal-header" style={{paddingBottom: '1rem'}}>
           <div className="modal-title-section">
             <h2 className="modal-title">{title}</h2>
@@ -52,6 +57,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
 
         <div style={{padding: '0 2rem 1.5rem 2rem'}}>
           
+          {/* Project Overview */}
           <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
             <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
               📋 Project Overview
@@ -61,6 +67,26 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </p>
           </section>
 
+          {/* YouTube Video Embed - Shows project demonstration */}
+          {videoUrl && (
+            <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
+              <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                🎥 Video Demonstration
+              </h3>
+              <div className="video-container">
+                <iframe
+                  src={videoUrl}
+                  title={`${title} - Video Demonstration`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="video-iframe"
+                ></iframe>
+              </div>
+            </section>
+          )}
+
+          {/* Screenshots Gallery */}
           {screenshots && screenshots.length > 0 && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -77,6 +103,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Key Metrics - Quantifiable project impact */}
           {keyMetrics && Object.keys(keyMetrics).length > 0 && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -93,6 +120,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Key Features - Main functionality list */}
           {features && features.length > 0 && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -109,6 +137,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Business Impact - Measurable outcomes */}
           {businessImpact && businessImpact.length > 0 && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -125,6 +154,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Technical Architecture - Stack breakdown */}
           {architecture && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -165,6 +195,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Challenges & Solutions - Problem-solving stories */}
           {challengesSolved && challengesSolved.length > 0 && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -191,6 +222,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Technologies Used */}
           {technologies && technologies.length > 0 && (
             <section style={{marginBottom: '1rem', marginTop: '0', padding: '0 0'}}>
               <h3 style={{color: '#000000', fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem', marginTop: '0', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -204,6 +236,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             </section>
           )}
 
+          {/* Action Buttons - Live Demo and GitHub */}
           <section style={{marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', gap: '1.5rem', flexWrap: 'wrap'}}>
             {liveDemo && (
               <a href={liveDemo} className="modal-btn modal-btn-primary" target="_blank" rel="noopener noreferrer" style={{flex: '1', minWidth: '200px'}}>
