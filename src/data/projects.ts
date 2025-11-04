@@ -2,6 +2,7 @@
 // ✅ Adds comprehensive project information for ProjectDetailModal
 // ✅ Includes business impact, architecture, and challenge-solution stories
 // ✅ Preserves all existing functionality
+// ✅ YouTube video embed support added
 
 import { Project } from '../types';
 
@@ -16,6 +17,7 @@ export const projects: Project[] = [
     github: 'https://github.com/raineer24/student-membership-tracking',
     image: '/images/ogmok-thumbnail.jpg',
     thumbnail: '/images/ogmok-thumbnail.jpg',
+    videoUrl: 'https://www.youtube.com/embed/pZrBHT6r8JA',
     screenshots: [
       { url: '/images/ogmok-thumbnail.jpg', caption: 'Dashboard Overview with Real-time Statistics' },
       { url: '/images/ogmok-detail-1.jpg', caption: 'Bulk Attendance Modal - 30 Second Logging' },

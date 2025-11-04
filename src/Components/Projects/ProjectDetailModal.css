@@ -1,6 +1,6 @@
 /* ================================================================
-   PROJECT DETAIL MODAL CSS - VERSION 11.0 - ENHANCED SPACING
-   Complete corrected version with proper spacing values
+   PROJECT DETAIL MODAL CSS - VERSION 12.0 - WITH VIDEO EMBED
+   Complete version with YouTube video support
    ================================================================ */
 
 /* Modal Overlay */
@@ -209,6 +209,33 @@
   line-height: 1.6;
   color: var(--text-secondary, #6b7280);
   margin: 0;
+}
+
+/* ================================================================
+   VIDEO EMBED STYLES
+   Responsive YouTube video embedding with 16:9 aspect ratio
+   ================================================================ */
+
+/* Video Container - Maintains 16:9 aspect ratio */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625 = 56.25%) */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Video Iframe - Fills container maintaining aspect ratio */
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
 }
 
 /* Screenshots Gallery */
@@ -570,6 +597,15 @@
   .screenshots-grid, .metrics-grid, .architecture-grid { grid-template-columns: 1fr; }
   .modal-actions { flex-direction: column; margin-top: 2rem; padding-top: 1.5rem; }
   .modal-btn { width: 100%; }
+  
+  /* Video responsive on mobile */
+  .video-container {
+    border-radius: 8px;
+  }
+  
+  .video-iframe {
+    border-radius: 8px;
+  }
 }
 
 @media (max-width: 480px) {

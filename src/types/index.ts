@@ -2,6 +2,7 @@
 // ✅ Adds Production status for live applications
 // ✅ Includes detailed project data structure for case studies
 // ✅ Backward compatible with existing components
+// ✅ YouTube video embed support added
 
 export interface Project {
   // Core project information
@@ -17,6 +18,7 @@ export interface Project {
   githubLink?: string;                    // Backward compatibility
   image?: string;
   thumbnail?: string;
+  videoUrl?: string;                      // YouTube embed URL for video demonstrations
   screenshots?: ProjectScreenshot[];      // Gallery for modal
   
   // Classification
@@ -41,7 +43,7 @@ export interface ProjectScreenshot {
 // Project status types
 export type ProjectStatus = 
   | 'Current Work'    // Actively working on project
-  | 'Production'      // Live with real users (NEW)
+  | 'Production'      // Live with real users
   | 'Completed'       // Finished but not necessarily live
   | 'In Progress';    // Under development
 
